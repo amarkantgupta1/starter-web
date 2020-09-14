@@ -1,0 +1,1953 @@
+1.Introduction:
+------------------
+#GIT:
+a.Distributed Source Control System.
+    .Not required to be decentralized.
+b.Massively scales
+c.Open source
+d.Developed for Linux project requirements
+e.Most operations are local
+f.Very fast
+g.Active Community
+h.Most popular DVCS, VCS
+	
+=>Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+#Key Concepts:
+a.Repository contains files, history, config managed by Git.
+b.Three states of GIT:
+.Working directory
+.Staging area - pre commit holding area
+.Commit - Git repository(history) 
+
+c.Remote Repository(GitHub)
+d.Master branch
+
+2.GIT Installation:
+-------------------
+a.Installing Git for Windows
+
+https://git-scm.com/
+https://gitforwindows.org/
+
+b.Installing Git on Mac OS X 
+
+3.Git Quick Start:
+--------------------
+1.Login to Github account and create github-demo repository.
+2.Create folder with name project into your local machine and right click inside folder and click-on Git bash here command prompt.
+3.Run below command if you have not yet configured.
+
+$ git config --global user.name "Amarkant Gupta"
+
+$ git config --global user.email "amarkantgupta1@gmail.com"
+
+$ git config --global --list
+
+You can see below results:
+
+$ git config --global --list
+user.email=amarkantgupta1@gmail.com
+user.name=Amarkant Gupta
+
+4.Now, we will clone github-demo repository into our local machine.
+
+$ git clone https://github.com/amarkantgupta1/github-demo.git
+
+5.Now, enter ls command to show us current directory.
+
+$ ls
+
+6.Go to repository.
+
+$ cd github-demo/
+
+7.Check the branch repository status using below cmd and it will show us default branch as master branch because we have not created any branch yet.
+
+$ git status
+
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+8.Now, We will create one text file with some text value using below command and then press enter and type ls cmd to see file is created or not?
+
+$ echo "Test Git Quick Start Demo" >>start.txt
+
+9. Using cat command we can see or display text file content on cmd prompt.
+
+$ cat start.txt
+Test Git Quick Start Demo
+
+10.After entering below cmd show as there is untracked files with name start.txt and use "git add" cmd to include and then commit file.
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        start.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+11. After adding file check status now and it will show and highlights file name into green color( new file:   start.txt).
+12. And this file will moved from "Working Directory" area to Local "Staging Area".
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/github-demo (master)
+$ git add start.txt
+warning: LF will be replaced by CRLF in start.txt.
+The file will have its original line endings in your working directory
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/github-demo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   start.txt
+
+		
+13.Now, Commit Start.text file using below command.
+
+$ git commit -m "Adding Start.text file"
+[master b198994] Adding Start.text file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 start.txt
+ 
+14.Now, new file has been moved from Local "Staging Area" to Repository(.git folder) and still this new file not moved yet to Remote GitHub(https://github.com/amarkantgupta1/github-demo).
+
+15. One last step which is push command need to use to push the file from Repository to Remote GitHub first time may be github will ask you to enter username and password while pushing file/code.
+
+$ git push origin master
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 316 bytes | 158.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/amarkantgupta1/github-demo.git
+   3d01111..b198994  master -> master
+
+
+4.Text Editor Installation:
+-----------------------------
+-Windows
+	-Notepad++
+	-Bash alias
+	-Git Configuration
+	
+-Mac OS X
+    -TextMate 2
+	-Git Configuration
+
+https://notepad-plus-plus.org/
+
+=>Go system environment variable and select path and paste below value and click on Ok button and then open Git bash and type notepad++ and enter.
+
+C:\Program Files (x86)\Notepad++
+
+$ notepad++
+
+16. Now , We can create new file into notepad++ using Git bash below command.
+
+$ notepad++ .bash_profile
+
+17. Enter below text into notepad open file , save it and press ctrl+w to close the file and press fn+alt+f4 to close the file and return cursor back on Git bash.
+
+=>alias npp='notepad++.exe -multiInst -nosession'
+
+=>If it will not work then execute below commands from Git bash.
+=>f you’ve never edited your .bashrc file before, you might not have one. So first we can quickly create one in our home directory:
+
+touch ~/.bashrc
+
+=>Then open it with the editor of your choice (for example, vim):
+
+vim ~/.bashrc
+
+=>And then enter below path at first line and then press Esc key and then :x and press enter.
+=>Now we’re going to add an alias for Notepad++ by adding the following line to the .bashrc file:
+
+alias npp="/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe"
+
+18.Open Git bash and type npp and then press enter if everthing is fine then notepad++ will launch.
+
+19.Now, We will open Git bash and enter cat ~/.gitconfig command.
+
+$ cat ~/.gitconfig
+[user]
+        email = amarkantgupta1@gmail.com
+        name = Amarkant Gupta
+
+
+20.Now, We will do git config global setting.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 ~
+$ git config --global core.editor "notepad++.exe -multiInst -nosession"
+
+=>Now, We will verify local and global level user setting using below command.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 ~
+$ git config --global --list
+user.email=amarkantgupta1@gmail.com
+user.name=Amarkant Gupta
+core.editor=notepad++.exe -multiInst -nosession
+
+=>Now will try to edit git configuration using below command.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 ~
+$ git config --global -e
+
+=> Now press ctrl+w to close the file and press fn+alt+f4 to close the file.
+
+21.Open browser and search https://macromates.com/ and download textmate 2.0 and open archive file and drag and drop textmate file to the system applications and then find textmate in into application and open it while double click.
+
+5.Basic Git Commands:
+---------------------
+a.Starting a Project
+  .Fresh(No source yet)
+  .Existing source locally
+  .GitHub project(Fork and clone).
+b.Basic Workflow(add, commit, push & pull)
+c.Working with Files(rename, move & delete)
+d.History and Aliases
+e.Ignoring Unwanted Files.
+
+http://hipsum.co/  
+
+/Practice_GIT_Course/projects/fresh-project
+$ pwd
+/c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+$ git status
+fatal: not a git repository (or any of the parent directories): .git
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+$ git init fresh-project
+Initialized empty Git repository in C:/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project/.git/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+$ ls
+fresh-project/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+$ cd fresh-project/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ ls
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ ls -al
+total 4
+drwxr-xr-x 1 Amarkant Gupta 197121 0 Sep 11 13:59 ./
+drwxr-xr-x 1 Amarkant Gupta 197121 0 Sep 11 13:59 ../
+drwxr-xr-x 1 Amarkant Gupta 197121 0 Sep 11 13:59 .git/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ cd .git/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project/.git (GIT_DIR!)
+$ ls
+config  description  HEAD  hooks/  info/  objects/  refs/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project/.git (GIT_DIR!)
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ notepad++ hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        hipster.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ git add hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   hipster.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ git commit
+[master (root-commit) 4a5595a] Adding new file with hipster ipsum This was done with notepad++
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project/fresh-project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+$ ls
+fresh-project/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+$ rm -rf fresh-project/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fresh-project
+$ ls
+
+22.Now, We will add Git to the existing project.
+
+23.Usin http://www.initializr.com/ We are going to setup new project.Click on Bootstrap and then check all boxes under H5BP Optional and click on download it button.
+ 
+$ unzip ~ C:/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0.zip
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects
+$ ls
+fresh-project/  github-demo/  initializr-verekia-4.0/  initializr-verekia-4.0.zip
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects
+$ cd initializr-verekia-4.0
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ ls
+initializr/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ mv initializr web-project
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ ls
+web-project/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ cd web-project/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project
+$ pwd
+/c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project
+$ ls
+404.html  apple-touch-icon.png  browserconfig.xml  crossdomain.xml  css/  favicon.ico  fonts/  humans.txt  img/  index.html  js/  robots.txt  tile.png  tile-wide.png
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project
+$ git init
+Initialized empty Git repository in C:/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project/.git/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project (master)
+$ ls -al
+total 91
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:29 ./
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:27 ../
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:29 .git/
+-rw-r--r-- 1 Amarkant Gupta 197121 39014 Sep 11 15:24 .htaccess
+-rw-r--r-- 1 Amarkant Gupta 197121  1272 Sep 11 15:24 404.html
+-rw-r--r-- 1 Amarkant Gupta 197121  3959 Sep 11 15:24 apple-touch-icon.png
+-rw-r--r-- 1 Amarkant Gupta 197121   416 Sep 11 15:24 browserconfig.xml
+-rw-r--r-- 1 Amarkant Gupta 197121   603 Sep 11 15:24 crossdomain.xml
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:24 css/
+-rw-r--r-- 1 Amarkant Gupta 197121   766 Sep 11 15:24 favicon.ico
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:24 fonts/
+-rw-r--r-- 1 Amarkant Gupta 197121   191 Sep 11 15:24 humans.txt
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 09:45 img/
+-rw-r--r-- 1 Amarkant Gupta 197121  5329 Sep 11 15:24 index.html
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:24 js/
+-rw-r--r-- 1 Amarkant Gupta 197121    78 Sep 11 15:24 robots.txt
+-rw-r--r-- 1 Amarkant Gupta 197121  3482 Sep 11 15:24 tile.png
+-rw-r--r-- 1 Amarkant Gupta 197121  1854 Sep 11 15:24 tile-wide.png
+
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        .htaccess
+        404.html
+        apple-touch-icon.png
+        browserconfig.xml
+        crossdomain.xml
+        css/
+        favicon.ico
+        fonts/
+        humans.txt
+        index.html
+        js/
+        robots.txt
+        tile-wide.png
+        tile.png
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project (master)
+$ git add .
+warning: LF will be replaced by CRLF in .htaccess.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in 404.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in browserconfig.xml.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in crossdomain.xml.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in css/bootstrap-theme.css.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in css/bootstrap-theme.min.css.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in css/bootstrap.css.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in css/bootstrap.min.css.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in css/main.css.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in fonts/glyphicons-halflings-regular.svg.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in humans.txt.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in index.html.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in js/main.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in js/plugins.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in js/vendor/bootstrap.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in js/vendor/bootstrap.min.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in js/vendor/jquery-1.11.2.min.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in js/vendor/modernizr-2.8.3-respond-1.4.2.min.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in js/vendor/npm.js.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in robots.txt.
+The file will have its original line endings in your working directory
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project (master)
+$ git commit -m "My first commit, inline"
+[master (root-commit) c966716] My first commit, inline
+ 29 files changed, 10594 insertions(+)
+ create mode 100644 .htaccess
+ create mode 100644 404.html
+ create mode 100644 apple-touch-icon.png
+ create mode 100644 browserconfig.xml
+ create mode 100644 crossdomain.xml
+ create mode 100644 css/bootstrap-theme.css
+ create mode 100644 css/bootstrap-theme.css.map
+ create mode 100644 css/bootstrap-theme.min.css
+ create mode 100644 css/bootstrap.css
+ create mode 100644 css/bootstrap.css.map
+ create mode 100644 css/bootstrap.min.css
+ create mode 100644 css/main.css
+ create mode 100644 favicon.ico
+ create mode 100644 fonts/glyphicons-halflings-regular.eot
+ create mode 100644 fonts/glyphicons-halflings-regular.svg
+ create mode 100644 fonts/glyphicons-halflings-regular.ttf
+ create mode 100644 fonts/glyphicons-halflings-regular.woff
+ create mode 100644 humans.txt
+ create mode 100644 index.html
+ create mode 100644 js/main.js
+ create mode 100644 js/plugins.js
+ create mode 100644 js/vendor/bootstrap.js
+ create mode 100644 js/vendor/bootstrap.min.js
+ create mode 100644 js/vendor/jquery-1.11.2.min.js
+ create mode 100644 js/vendor/modernizr-2.8.3-respond-1.4.2.min.js
+ create mode 100644 js/vendor/npm.js
+ create mode 100644 robots.txt
+ create mode 100644 tile-wide.png
+ create mode 100644 tile.png
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project (master)
+$ ls -al
+total 91
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:29 ./
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:27 ../
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:37 .git/
+-rw-r--r-- 1 Amarkant Gupta 197121 39014 Sep 11 15:24 .htaccess
+-rw-r--r-- 1 Amarkant Gupta 197121  1272 Sep 11 15:24 404.html
+-rw-r--r-- 1 Amarkant Gupta 197121  3959 Sep 11 15:24 apple-touch-icon.png
+-rw-r--r-- 1 Amarkant Gupta 197121   416 Sep 11 15:24 browserconfig.xml
+-rw-r--r-- 1 Amarkant Gupta 197121   603 Sep 11 15:24 crossdomain.xml
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:24 css/
+-rw-r--r-- 1 Amarkant Gupta 197121   766 Sep 11 15:24 favicon.ico
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:24 fonts/
+-rw-r--r-- 1 Amarkant Gupta 197121   191 Sep 11 15:24 humans.txt
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 09:45 img/
+-rw-r--r-- 1 Amarkant Gupta 197121  5329 Sep 11 15:24 index.html
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 15:24 js/
+-rw-r--r-- 1 Amarkant Gupta 197121    78 Sep 11 15:24 robots.txt
+-rw-r--r-- 1 Amarkant Gupta 197121  3482 Sep 11 15:24 tile.png
+-rw-r--r-- 1 Amarkant Gupta 197121  1854 Sep 11 15:24 tile-wide.png
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project (master)
+$ rm -rf .git
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project
+$ ls
+404.html  apple-touch-icon.png  browserconfig.xml  crossdomain.xml  css/  favicon.ico  fonts/  humans.txt  img/  index.html  js/  robots.txt  tile.png  tile-wide.png
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0/web-project
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ pwd
+/c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ ls
+web-project/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ rm -rf web-project
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/initializr-verekia-4.0
+$ ls
+
+24.Login to your GitHub Repository.
+25.Open below URL into browser.
+https://github.com/scm-ninja/starter-web
+26.Click on fork and select your GitHub user id where you want to copy it.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project
+$ git clone https://github.com/amarkantgupta1/starter-web.git
+Cloning into 'starter-web'...
+remote: Enumerating objects: 39, done.
+remote: Total 39 (delta 0), reused 0 (delta 0), pack-reused 39
+Unpacking objects: 100% (39/39), done.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project
+$ ls
+starter-web/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project
+$ cd starter-web/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls -al
+total 80
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 16:32 ./
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 16:32 ../
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 16:32 .git/
+-rw-r--r-- 1 Amarkant Gupta 197121 30612 Sep 11 16:32 .htaccess
+-rw-r--r-- 1 Amarkant Gupta 197121  4616 Sep 11 16:32 404.html
+-rw-r--r-- 1 Amarkant Gupta 197121  1226 Sep 11 16:32 apple-touch-icon-precomposed.png
+-rw-r--r-- 1 Amarkant Gupta 197121   618 Sep 11 16:32 crossdomain.xml
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 16:32 css/
+-rw-r--r-- 1 Amarkant Gupta 197121   766 Sep 11 16:32 favicon.ico
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 16:32 fonts/
+-rw-r--r-- 1 Amarkant Gupta 197121   206 Sep 11 16:32 humans.txt
+-rw-r--r-- 1 Amarkant Gupta 197121  5260 Sep 11 16:32 index.html
+drwxr-xr-x 1 Amarkant Gupta 197121     0 Sep 11 16:32 js/
+-rw-r--r-- 1 Amarkant Gupta 197121   139 Sep 11 16:32 README.md
+-rw-r--r-- 1 Amarkant Gupta 197121    35 Sep 11 16:32 robots.txt
+-rw-r--r-- 1 Amarkant Gupta 197121   453 Sep 11 16:32 simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ cd .git/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/.git (GIT_DIR!)
+$ ls
+config  description  HEAD  hooks/  index  info/  logs/  objects/  packed-refs  refs/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/.git (GIT_DIR!)
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  humans.txt  index.html  js/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+------------------------------------------------------
+https://bitly.com/git-start-web
+http://meettheipsums.com/
+http://hipsum.co/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ notepad++ hipsumster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  hipsumster.txt  humans.txt  index.html  js/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        hipsumster.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git add hipsumster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   hipsumster.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git commit
+[master d9771ef] My first commit!
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hipsumster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git pull origin master
+From https://github.com/amarkantgupta1/starter-web
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git push origin master
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 620 bytes | 620.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/amarkantgupta1/starter-web.git
+   4beb7f0..d9771ef  master -> master
+
+=>If we want to change name or email id then we can edit it using below command.
+
+$ notepad++ ~/.gitconfig
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ notepad++ ~/.gitconfig
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ notepad++ hipsumster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   hipsumster.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git commit -am "Adding more ipsum text file"
+[master 503ec08] Adding more ipsum text file
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git ls-files
+.htaccess
+404.html
+README.md
+apple-touch-icon-precomposed.png
+crossdomain.xml
+css/bootstrap-theme.css
+css/bootstrap-theme.css.map
+css/bootstrap-theme.min.css
+css/bootstrap.css
+css/bootstrap.css.map
+css/bootstrap.min.css
+css/main.css
+favicon.ico
+fonts/glyphicons-halflings-regular.eot
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff
+hipsumster.txt
+humans.txt
+index.html
+js/main.js
+js/plugins.js
+js/vendor/bootstrap.js
+js/vendor/bootstrap.min.js
+js/vendor/jquery-1.11.0.min.js
+js/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+robots.txt
+simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ notepad++ newfile.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  hipsumster.txt  humans.txt  index.html  js/  newfile.txt  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        newfile.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git ls-files
+.htaccess
+404.html
+README.md
+apple-touch-icon-precomposed.png
+crossdomain.xml
+css/bootstrap-theme.css
+css/bootstrap-theme.css.map
+css/bootstrap-theme.min.css
+css/bootstrap.css
+css/bootstrap.css.map
+css/bootstrap.min.css
+css/main.css
+favicon.ico
+fonts/glyphicons-halflings-regular.eot
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff
+hipsumster.txt
+humans.txt
+index.html
+js/main.js
+js/plugins.js
+js/vendor/bootstrap.js
+js/vendor/bootstrap.min.js
+js/vendor/jquery-1.11.0.min.js
+js/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+robots.txt
+simple.html
+
+=>Until and unless we will not use add command after any file modification then it wont show into git ls-files command.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git add newfile.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   newfile.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$  git ls-files
+.htaccess
+404.html
+README.md
+apple-touch-icon-precomposed.png
+crossdomain.xml
+css/bootstrap-theme.css
+css/bootstrap-theme.css.map
+css/bootstrap-theme.min.css
+css/bootstrap.css
+css/bootstrap.css.map
+css/bootstrap.min.css
+css/main.css
+favicon.ico
+fonts/glyphicons-halflings-regular.eot
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff
+hipsumster.txt
+humans.txt
+index.html
+js/main.js
+js/plugins.js
+js/vendor/bootstrap.js
+js/vendor/bootstrap.min.js
+js/vendor/jquery-1.11.0.min.js
+js/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+newfile.txt
+robots.txt
+simple.html
+
+$ notepad++ hipsumster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   newfile.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   hipsumster.txt
+
+
+=>So now it's showing that one file has change for commit and other file is changed but not staged.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git commit -m "Adding new file"
+[master 52a722a] Adding new file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newfile.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   hipsumster.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ notepad++ hipsumster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   hipsumster.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   hipsumster.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git add hipsumster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git commit -m "Adding more text to  hipsumster.txt file"
+[master 4983664] Adding more text to  hipsumster.txt file
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+=>How to recursively add file:
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ mkdir -p level1/level2/level3/level5
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ cd level1/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ notepad++ level1-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ ls
+level1-file.txt  level2/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ cd level2
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ notepad++ level2-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+level2-file.txt  level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+level2-file.txt  level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ cd level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ notepad++ level3-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ ls
+level3-file.txt  level5/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ rm -rf level5/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ cd ../../..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  hipsumster.txt  humans.txt  index.html  js/  level1/  newfile.txt  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        level1/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git add .
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git ststus
+git: 'ststus' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   level1/level1-file.txt
+        new file:   level1/level2/level2-file.txt
+        new file:   level1/level2/level3/level3-file.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git commit
+[master e10b1a9] Adding files to the recursively
+ 3 files changed, 15 insertions(+)
+ create mode 100644 level1/level1-file.txt
+ create mode 100644 level1/level2/level2-file.txt
+ create mode 100644 level1/level2/level3/level3-file.txt
+
+29.Backing Out Changes:
+-----------------------
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ cd level1/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ ls
+level1-file.txt  level2/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ notepad++ level1-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   level1-file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git add level1-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   level1-file.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git reset HEAD level1-file.txt
+Unstaged changes after reset:
+M       level1/level1-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   level1-file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ notepad++ level1-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git checkout -- level1-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+30. Renaming and Moving Files:
+---------------------------------
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ pwd
+/c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ cd level1/level2/level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ pwd
+/c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ cd level1/level2/level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ pwd
+/c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ ls
+level3-file.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ git mv level3-file.txt level3.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ ls
+level3.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 4 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    level3-file.txt -> level3.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ git commit -m "Renaming file level3-file.txt to level3.txt"
+[master 59b6117] Renaming file level3-file.txt to level3.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename level1/level2/level3/{level3-file.txt => level3.txt} (100%)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+level2-file.txt  level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ mv level2-file.txt level2.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 5 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    level2-file.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        level2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+=>git add -A =>This command used to add any types of file which have renamed/moved etc.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git add -A
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 5 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    level2-file.txt -> level2.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git commit
+[master 8dab498] Renaming git level2 file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename level1/level2/{level2-file.txt => level2.txt} (100%)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git mv level2.txt 2.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+2.txt  level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 6 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    level2.txt -> 2.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git mv 2.txt level2.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+level2.txt  level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 6 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+level2.txt  level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git mv level2.txt level3
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ cd level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ ls
+level2.txt  level3.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 6 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    ../level2.txt -> level2.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 6 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    level2.txt -> level3/level2.txt
+
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git commit
+[master ccffedf] Moving file from level 2 to level 3
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename level1/level2/{ => level3}/level2.txt (100%)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ cd level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ ls
+level2.txt  level3.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ mv level2.txt ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ ls
+level3.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2/level3 (master)
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ ls
+level2.txt  level3/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 7 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    level3/level2.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        level2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git add -A
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 7 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    level3/level2.txt -> level2.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ git commit
+[master 337e5e5] Moving level 2 file back level 2 directory
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename level1/level2/{level3 => }/level2.txt (100%)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1/level2 (master)
+$ cd ..
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ ls
+level1-file.txt  level2/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ ls
+level1.txt  level2/
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 8 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    level1-file.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        level1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git add level1.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git add -u
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 8 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    level1-file.txt -> level1.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 8 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    level1-file.txt -> level1.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git commit
+[master 6d68447] Renaming level 1 file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename level1/{level1-file.txt => level1.txt} (100%)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web/level1 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 9 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+31. Deleting Files:
+--------------------
+$ notepad++ doomed.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html                          crossdomain.xml  doomed.txt   fonts/          humans.txt  js/      newfile.txt  robots.txt
+apple-touch-icon-precomposed.png  css/             favicon.ico  hipsumster.txt  index.html  level1/  README.md    simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 9 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        doomed.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git rm doomed.txt
+fatal: pathspec 'doomed.txt' did not match any files
+
+=>While deletinng doomed.txt file Git command won't work because this file is untracked by Git if will bash command as rm without git then it will work
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ rm doomed.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 9 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  hipsumster.txt  humans.txt  index.html  js/  level1/  newfile.txt  README.md  robots.txt  simple.html
+
+=>Now, We will try to delete newfile.txt file which is tracked by Git.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git ls-files
+
+.htaccess
+404.html
+README.md
+apple-touch-icon-precomposed.png
+crossdomain.xml
+css/bootstrap-theme.css
+css/bootstrap-theme.css.map
+css/bootstrap-theme.min.css
+css/bootstrap.css
+css/bootstrap.css.map
+css/bootstrap.min.css
+css/main.css
+favicon.ico
+fonts/glyphicons-halflings-regular.eot
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff
+hipsumster.txt
+humans.txt
+index.html
+js/main.js
+js/plugins.js
+js/vendor/bootstrap.js
+js/vendor/bootstrap.min.js
+js/vendor/jquery-1.11.0.min.js
+js/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+level1/level1.txt
+level1/level2/level2.txt
+level1/level2/level3/level3.txt
+newfile.txt
+robots.txt
+simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git rm newfile.txt
+rm 'newfile.txt'
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  hipsumster.txt  humans.txt  index.html  js/  level1/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git ls-files
+.htaccess
+404.html
+README.md
+apple-touch-icon-precomposed.png
+crossdomain.xml
+css/bootstrap-theme.css
+css/bootstrap-theme.css.map
+css/bootstrap-theme.min.css
+css/bootstrap.css
+css/bootstrap.css.map
+css/bootstrap.min.css
+css/main.css
+favicon.ico
+fonts/glyphicons-halflings-regular.eot
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff
+hipsumster.txt
+humans.txt
+index.html
+js/main.js
+js/plugins.js
+js/vendor/bootstrap.js
+js/vendor/bootstrap.min.js
+js/vendor/jquery-1.11.0.min.js
+js/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+level1/level1.txt
+level1/level2/level2.txt
+level1/level2/level3/level3.txt
+robots.txt
+simple.html
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 9 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    newfile.txt
+
+
+$ git commit -m "Deleting new file"
+[master 54bc192] Deleting new file
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 newfile.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 10 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+=>Now, We will try to delete local staging file.
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  hipsumster.txt  humans.txt  index.html  js/  level1/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git mv hipsumster.txt hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 10 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    hipsumster.txt -> hipster.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git rm hipster.txt
+error: the following file has changes staged in the index:
+    hipster.txt
+(use --cached to keep the file, or -f to force removal)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 10 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    hipsumster.txt -> hipster.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git commit -m "Renamed  hipsumster.txt -> hipster.txt"
+[master 27197e4] Renamed  hipsumster.txt -> hipster.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename hipsumster.txt => hipster.txt (100%)
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git rm hipster.txt
+rm 'hipster.txt'
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 11 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    hipster.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git reset HEAD hipster.txt
+Unstaged changes after reset:
+D       hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  humans.txt  index.html  js/  level1/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 11 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    hipster.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git checkout -- hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  hipster.txt  humans.txt  index.html  js/  level1/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 11 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+=>Now, We are trying to delete file using rm bash command
+.
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ rm hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  humans.txt  index.html  js/  level1/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 11 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    hipster.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git add -A
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 11 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    hipster.txt
+
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git commit
+[master 02d11d7] Deleted hipster.txt file
+ 1 file changed, 10 deletions(-)
+ delete mode 100644 hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 12 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  humans.txt  index.html  js/  level1/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ rm -rf level1
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ ls
+404.html  apple-touch-icon-precomposed.png  crossdomain.xml  css/  favicon.ico  fonts/  humans.txt  index.html  js/  README.md  robots.txt  simple.html
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 12 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    level1/level1.txt
+        deleted:    level1/level2/level2.txt
+        deleted:    level1/level2/level3/level3.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git add -A
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 12 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    level1/level1.txt
+        deleted:    level1/level2/level2.txt
+        deleted:    level1/level2/level3/level3.txt
+
+
+$ git commit -m "Deleting level1 and all children directory"
+[master 3e40b26] Deleting level1 and all children directory
+ 3 files changed, 15 deletions(-)
+ delete mode 100644 level1/level1.txt
+ delete mode 100644 level1/level2/level2.txt
+ delete mode 100644 level1/level2/level3/level3.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 13 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+32. History:
+-------------------
+
+$ git help logs
+
+=>file:///C:/Program%20Files/Git/mingw64/share/doc/git-doc/git-log.html
+
+$ git log
+
+$ git log
+commit 3e40b26dc9c9ef1453a8a963f82c64ff99b2285c (HEAD -> master)
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:33:12 2020 +0530
+
+    Deleting level1 and all children directory
+
+commit 02d11d73257e4b271d18c9330f37defbc626b6fc
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:23:49 2020 +0530
+
+    Deleted hipster.txt file
+
+commit 27197e4c4092a8520424af76543d29204a4feb3e
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:12:01 2020 +0530
+
+    Renamed  hipsumster.txt -> hipster.txt
+
+	
+$ git log --abbrev-commit
+
+$ git log --abbrev-commit
+commit 3e40b26 (HEAD -> master)
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:33:12 2020 +0530
+
+    Deleting level1 and all children directory
+
+commit 02d11d7
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:23:49 2020 +0530
+
+    Deleted hipster.txt file
+
+	
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git log --oneline --graph --decorate
+* 3e40b26 (HEAD -> master) Deleting level1 and all children directory
+* 02d11d7 Deleted hipster.txt file
+* 27197e4 Renamed  hipsumster.txt -> hipster.txt
+* 54bc192 Deleting new file
+* 6d68447 Renaming level 1 file
+* 337e5e5 Moving level 2 file back level 2 directory
+* ccffedf Moving file from level 2 to level 3
+* 8dab498 Renaming git level2 file
+* 59b6117 Renaming file level3-file.txt to level3.txt
+* e10b1a9 Adding files to the recursively
+* 4983664 Adding more text to  hipsumster.txt file
+* 52a722a Adding new file
+* 503ec08 Adding more ipsum text file
+* d9771ef (origin/master, origin/HEAD) My first commit!
+*   4beb7f0 Merge pull request #6 from jasongtaylor/feature-readme
+|\
+| * e73f914 Adding Purpose section to README
+| * 34f563b Adding README file
+|/
+* 5c05047 Copying files from initializr project zip file and then creating simple.html as basis for super simple pages
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git log 3e40b26...54bc192
+commit 3e40b26dc9c9ef1453a8a963f82c64ff99b2285c (HEAD -> master)
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:33:12 2020 +0530
+
+    Deleting level1 and all children directory
+
+commit 02d11d73257e4b271d18c9330f37defbc626b6fc
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:23:49 2020 +0530
+
+    Deleted hipster.txt file
+
+commit 27197e4c4092a8520424af76543d29204a4feb3e
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:12:01 2020 +0530
+
+    Renamed  hipsumster.txt -> hipster.txt
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git log --since="3 days ago"
+commit 3e40b26dc9c9ef1453a8a963f82c64ff99b2285c (HEAD -> master)
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:33:12 2020 +0530
+
+    Deleting level1 and all children directory
+
+commit 02d11d73257e4b271d18c9330f37defbc626b6fc
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:23:49 2020 +0530
+
+    Deleted hipster.txt file
+
+commit 27197e4c4092a8520424af76543d29204a4feb3e
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:12:01 2020 +0530
+
+    Renamed  hipsumster.txt -> hipster.txt
+
+commit 54bc1924ba75392f7ef807b1a0bc5f89b758ca42
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:07:39 2020 +0530
+
+    Deleting new file
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git log --  robots.txt
+commit 5c05047e53ecd0913a6f10000014d38829aaecdc
+Author: Jason Taylor <jason@screencasts.pro>
+Date:   Thu Sep 11 22:14:19 2014 -0400
+
+    Copying files from initializr project zip file and then creating simple.html as basis for super simple pages
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git log --follow -- level1/level2/level2.txt
+commit 3e40b26dc9c9ef1453a8a963f82c64ff99b2285c (HEAD -> master)
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 21:33:12 2020 +0530
+
+    Deleting level1 and all children directory
+
+commit 337e5e5074e20ca1729a85ad3a8be7e9ac40c7e0
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 20:02:51 2020 +0530
+
+    Moving level 2 file back level 2 directory
+
+commit ccffedf31c3bf5430337202f57260b3ad1457305
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 19:59:07 2020 +0530
+
+    Moving file from level 2 to level 3
+
+commit 8dab498ca56a4c4037eafadcae0620d919853e88
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 19:49:16 2020 +0530
+
+    Renaming git level2 file
+
+commit e10b1a9b06bb223a0719d6ffe4c4b2a327873f0c
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 18:07:26 2020 +0530
+
+    Adding files to the recursively
+
+Amarkant Gupta@DESKTOP-5IB2RB4 MINGW64 /c/AMARKANT/GIT_Complete_Course_Materials/Practice_GIT_Course/projects/fork-project/starter-web (master)
+$ git show e10b1a9b06bb223a0719d6ffe4c4b2a327873f0c
+commit e10b1a9b06bb223a0719d6ffe4c4b2a327873f0c
+Author: Amarkant Gupta <amarkantgupta1@gmail.com>
+Date:   Fri Sep 11 18:07:26 2020 +0530
+
+    Adding files to the recursively
+
+diff --git a/level1/level1-file.txt b/level1/level1-file.txt
+new file mode 100644
+index 0000000..c7125a1
+--- /dev/null
++++ b/level1/level1-file.txt
+@@ -0,0 +1,3 @@
++I'm baby farm-to-table craft beer cloud bread, shabby chic hoodie la croix direct trade small batch street art lo-fi polaroid sartorial YOLO. Leggings post-ironic shaman gluten-free kale chips, humblebrag literally fam kitsch godard gochujang tattooed enamel pin chia. Cred enamel pin keytar activated charcoal wayfarers brooklyn. Four loko flexitarian art party kombucha polaroid craft beer letterpress tumblr keffiyeh vexillologist bicycle rights meggings. Crucifix 3 wolf moon whatever blue bottle, hot chicken jianbing normcore squid kitsch.
++
++Kinfolk cardigan PBR&B butcher vexillologist sartorial vape, vegan art party kogi synth. Live-edge pug thundercats, jianbing YOLO mumblecore vinyl gochujang poutine occupy palo santo cold-pressed gastropub. Twee palo santo kogi actually vinyl street art intelligentsia squid gochujang taiyaki tacos wayfarers hoodie occupy cliche. Succulents polaroid viral single-origin coffee small batch PBR&B. Tbh iPhone offal salvia waistcoat, hammock selvage dreamcatcher sriracha etsy YOLO meggings. Four loko master cleanse pug, brunch pork belly messenger bag deep v kitsch normcore chicharrones tilde. Gastropub meggings raclette, drinking vinegar YOLO taxidermy beard master cleanse 8-bit chambray pop-up enamel pin skateboard seitan artisan.
+\ No newline at end of file
+diff --git a/level1/level2/level2-file.txt b/level1/level2/level2-file.txt
+new file mode 100644
+index 0000000..d666c9c
+--- /dev/null
++++ b/level1/level2/level2-file.txt
+@@ -0,0 +1,5 @@
++I'm baby vexillologist pug ea coloring book do. Mixtape vaporware exercitation artisan offal. Mumblecore unicorn bitters sartorial. Stumptown minim vaporware kitsch beard yr mumblecore scenester hoodie leggings normcore listicle meh.
++
++PBR&B mustache helvetica semiotics kitsch lo-fi iPhone labore hexagon 90's reprehenderit organic yuccie. Lyft godard shabby chic ramps, waistcoat four dollar toast chillwave crucifix commodo nisi. Gochujang 90's in poutine pour-over swag commodo tousled ex disrupt cillum kickstarter. Intelligentsia voluptate master cleanse man braid. Celiac quis synth jianbing venmo cronut pabst banjo try-hard everyday carry.
++
++Jianbing chambray vinyl bushwick, scenester helvetica messenger bag air plant selfies franzen portland neutra. Vexillologist labore cray man bun sartorial tumeric. Hot chicken synth occaecat roof party. Aute taxidermy est ut, cloud bread tumeric la croix 8-bit twee squid veniam palo santo copper mug fixie prism.
+\ No newline at end of file
+diff --git a/level1/level2/level3/level3-file.txt b/level1/level2/level3/level3-file.txt
+new file mode 100644
+index 0000000..ca3a129
+--- /dev/null
++++ b/level1/level2/level3/level3-file.txt
+@@ -0,0 +1,7 @@
++Fashion axe aute esse exercitation ipsum, chartreuse readymade. Non lumbersexual quinoa deep v. Succulents pitchfork tumblr pop-up scenester selvage ennui. Tbh disrupt cray, organic dolore edison bulb subway tile ea brooklyn banh mi leggings hammock food truck. Et succulents occaecat sartorial microdosing gochujang hoodie knausgaard eiusmod polaroid dolore brunch cred nostrud. Williamsburg vegan qui tofu authentic, aliquip post-ironic do hella asymmetrical. Before they sold out banh mi slow-carb food truck health goth.
++
++Mollit narwhal glossier fam est microdosing. Thundercats gochujang pok pok, cold-pressed intelligentsia put a bird on it jean shorts messenger bag try-hard master cleanse chillwave. Kinfolk ullamco shoreditch, migas keffiyeh id VHS flexitarian vinyl poke qui williamsburg nulla enamel pin. Gastropub slow-carb retro, yuccie dolor single-origin coffee lorem enamel pin gluten-free sei:
