@@ -3,7 +3,7 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Amarkant Gupta -- developer -- @amarkant111
 
 # THANKS
 
